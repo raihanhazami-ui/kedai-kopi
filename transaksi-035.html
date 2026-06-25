@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaksi - Kedai Kopi Kami</title>
+    
+    <!-- Bootstrap 5 CSS via CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome untuk Ikon Menarik -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts (Playfair Display & Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-coffee-dark: #2c1a11;
+            --color-coffee-medium: #6f4e37;
+            --color-coffee-light: #f5ebe0;
+            --color-coffee-accent: #d4a373;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Poppins', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: #faf7f2;
+            color: #4a4a4a;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: var(--color-coffee-dark);
+        }
+        .navbar-brand {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .nav-link {
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: var(--color-coffee-accent) !important;
+        }
+
+        /* Header Banner Section */
+        .page-header {
+            background: linear-gradient(rgba(44, 26, 17, 0.85), rgba(44, 26, 17, 0.85)), 
+                        url('watermarked_img_2923761011819721869.png') no-repeat center center/cover;
+            color: white;
+            padding: 80px 0 50px;
+        }
+        .page-header h1 {
+            font-family: var(--font-serif);
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+
+        /* Custom Cards & Tables */
+        .transaksi-card {
+            background-color: white;
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(111, 78, 55, 0.08);
+            padding: 30px;
+        }
+        .text-accent {
+            color: var(--color-coffee-medium);
+            font-family: var(--font-serif);
+            font-weight: 700;
+        }
+        
+        .table-coffee thead {
+            background-color: var(--color-coffee-dark);
+            color: white;
+        }
+        .table-coffee th {
+            font-weight: 600;
+            padding: 15px;
+        }
+        .table-coffee td {
+            padding: 15px;
+            vertical-align: middle;
+        }
+
+        /* Form Customizations */
+        .form-label {
+            font-weight: 500;
+            color: var(--color-coffee-dark);
+        }
+        .form-control, .form-select {
+            border: 1.5px solid #e0dcd5;
+            border-radius: 10px;
+            padding: 12px 16px;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: var(--color-coffee-accent);
+            box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.25);
+        }
+
+        .btn-order-now {
+            background-color: var(--color-coffee-medium);
+            color: white;
+            border-radius: 10px;
+            font-weight: 600;
+            padding: 14px;
+            transition: background-color 0.3s ease;
+            border: none;
+        }
+        .btn-order-now:hover {
+            background-color: var(--color-coffee-dark);
+            color: white;
+        }
+
+        /* Modal / Receipt Design */
+        .modal-content {
+            border-radius: 20px;
+            border: none;
+            overflow: hidden;
+        }
+        .modal-header {
+            background-color: var(--color-coffee-dark);
+            color: white;
+            border: none;
+            padding: 20px;
+        }
+        .receipt-line {
+            border-bottom: 2px dashed #e0dcd5;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigasi Utama -->
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand text-white" href="index-035.html">
+                <i class="fa-solid fa-mug-hot me-2"></i>Kedai Kopi Kami
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link text-white-50" href="index-035.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link text-white-50" href="profile-035.html">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link active text-white" href="transaksi-035.html">Transaksi</a></li>
+                    <li class="nav-item"><a class="nav-link text-white-50" href="login-035.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Halaman -->
+    <header class="page-header text-center mb-5">
+        <div class="container">
+            <h1>Pemesanan & Transaksi</h1>
+            <p class="lead text-white-50 max-width-600 mx-auto">Nikmati kemudahan memesan kopi hangat favorit Anda secara instan dan aman.</p>
+        </div>
+    </header>
+
+    <!-- Konten Utama Pemesanan -->
+    <main class="pb-5">
+        <div class="container">
+            <div class="row g-5">
+                
+                <!-- Kolom Kiri: Daftar Harga Kopi -->
+                <div class="col-lg-6">
+                    <div class="transaksi-card h-100">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="bg-light p-3 rounded-circle text-coffee-medium me-3" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background-color: var(--color-coffee-light) !important;">
+                                <i class="fa-solid fa-clipboard-list fs-4" style="color: var(--color-coffee-medium);"></i>
+                            </div>
+                            <h3 class="fw-bold mb-0 text-accent">Daftar Harga Kopi</h3>
+                        </div>
+                        <p class="text-muted small mb-4">Daftar menu kopi segar siap seduh dengan standar kualitas barista kami hari ini:</p>
+                        
+                        <div class="table-responsive">
+                            <table class="table table-hover table-coffee align-middle border">
+                                <thead>
+                                    <tr>
+                                        <th><i class="fa-solid fa-coffee me-2"></i>Nama Varian</th>
+                                        <th class="text-end"><i class="fa-solid fa-tag me-2"></i>Harga Satuan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Espresso Premium</strong></td>
+                                        <td class="text-end fw-semibold text-accent">Rp 16.500</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Café Latte Art</strong></td>
+                                        <td class="text-end fw-semibold text-accent">Rp 25.500</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Cappuccino Classico</strong></td>
+                                        <td class="text-end fw-semibold text-accent">Rp 22.500</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="alert alert-warning border-0 mt-4 d-flex align-items-center" style="background-color: var(--color-coffee-light); color: var(--color-coffee-dark); border-radius: 12px;">
+                            <i class="fa-solid fa-circle-info me-3 fs-5"></i>
+                            <small class="fw-medium">Harga di atas sudah termasuk pajak pelayanan. Proses penyajian memakan waktu sekitar 5-10 menit.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kolom Kanan: Form Pemesanan -->
+                <div class="col-lg-6">
+                    <div class="transaksi-card h-100">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="bg-light p-3 rounded-circle text-coffee-medium me-3" style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background-color: var(--color-coffee-light) !important;">
+                                <i class="fa-solid fa-file-invoice-dollar fs-4" style="color: var(--color-coffee-medium);"></i>
+                            </div>
+                            <h3 class="fw-bold mb-0 text-accent">Form Pemesanan</h3>
+                        </div>
+                        <p class="text-muted small mb-4">Isi data diri Anda dan pilih varian rasa kopi terbaik Anda di bawah ini:</p>
+
+                        <form id="formKopi" onsubmit="event.preventDefault(); proses();">
+                            <!-- Input Nama Pelanggan -->
+                            <div class="mb-4">
+                                <label for="nama" class="form-label"><i class="fa-regular fa-user me-2"></i>Nama Pelanggan</label>
+                                <input type="text" id="nama" class="form-control" placeholder="Masukkan nama lengkap Anda..." required>
+                            </div>
+
+                            <!-- Dropdown Pilihan Kopi -->
+                            <div class="mb-4">
+                                <label for="pilihan" class="form-label"><i class="fa-solid fa-mug-hot me-2"></i>Pilih Varian Kopi</label>
+                                <select id="pilihan" class="form-select" required>
+                                    <option value="" disabled selected>-- Pilih kopi pesanan Anda --</option>
+                                    <option value="Espresso Premium" data-harga="16500">Espresso Premium (Rp 16.500)</option>
+                                    <option value="Café Latte Art" data-harga="25500">Café Latte Art (Rp 25.500)</option>
+                                    <option value="Cappuccino Classico" data-harga="22500">Cappuccino Classico (Rp 22.500)</option>
+                                </select>
+                            </div>
+
+                            <!-- Jumlah Pesanan -->
+                            <div class="mb-4">
+                                <label for="jumlah" class="form-label"><i class="fa-solid fa-calculator me-2"></i>Jumlah Gelas</label>
+                                <input type="number" id="jumlah" class="form-control" value="1" min="1" max="100" required>
+                            </div>
+
+                            <!-- Tombol Kirim Pesanan -->
+                            <button type="submit" class="btn btn-order-now w-100 py-3 shadow-sm">
+                                <i class="fa-solid fa-cart-shopping me-2"></i>Kirim Pesanan Sekarang
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Nota / Receipt Kopi (Alternatif Pengganti Alert) -->
+    <div class="modal fade" id="invoiceModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header d-flex flex-column align-items-center text-center py-4">
+                    <i class="fa-solid fa-circle-check text-success fs-1 mb-2"></i>
+                    <h5 class="modal-title fw-bold" id="invoiceTitle">Pesanan Berhasil Diterima!</h5>
+                    <small style="opacity: 0.8;">Terima kasih telah memesan di Kedai Kopi Kami</small>
+                </div>
+                <div class="modal-body p-4 text-dark">
+                    <div class="text-center mb-3">
+                        <small class="text-muted d-block">ID TRANSAKSI</small>
+                        <strong class="text-uppercase" id="invoiceId" style="letter-spacing: 1px;">KPK-XXXXXXXX</strong>
+                    </div>
+                    
+                    <div class="receipt-line"></div>
+                    
+                    <!-- Rincian Nota -->
+                    <div class="row g-2 small">
+                        <div class="col-5 text-muted">Pelanggan:</div>
+                        <div class="col-7 text-end fw-bold text-dark" id="receiptNama">-</div>
+
+                        <div class="col-5 text-muted">Waktu Transaksi:</div>
+                        <div class="col-7 text-end text-dark" id="receiptWaktu">-</div>
+
+                        <div class="col-5 text-muted">Metode:</div>
+                        <div class="col-7 text-end text-success fw-semibold">Bayar di Kasir (Tunai)</div>
+                    </div>
+
+                    <div class="receipt-line"></div>
+
+                    <!-- Item Transaksi -->
+                    <div class="row g-2 mb-2">
+                        <div class="col-7">
+                            <strong id="receiptKopi">-</strong>
+                            <div class="small text-muted" id="receiptDetailHarga">Rp 0 x 0 Gelas</div>
+                        </div>
+                        <div class="col-5 text-end align-self-center">
+                            <strong class="text-accent fs-5" id="receiptTotal">Rp 0</strong>
+                        </div>
+                    </div>
+
+                    <div class="receipt-line"></div>
+
+                    <div class="text-center mt-3 bg-light p-3 rounded" style="border-left: 4px solid var(--color-coffee-accent);">
+                        <p class="mb-0 small text-muted">Status Pesanan Anda:</p>
+                        <span class="badge bg-warning text-dark mt-1 p-2"><i class="fa-solid fa-spinner fa-spin me-1"></i> Sedang Dibuat Barista ☕</span>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 p-3 bg-light">
+                    <button type="button" class="btn btn-secondary w-100 py-2.5 rounded-3" data-bs-dismiss="modal">Tutup & Pesan Lagi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Konsisten -->
+    <footer class="py-4 text-center mt-auto" style="background-color: var(--color-coffee-dark); color: rgba(255,255,255,0.6);">
+        <div class="container">
+            <p class="mb-0 small">&copy; 2026 Kedai Kopi Kami. All rights reserved. Created with Bootstrap 5.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS via CDN (Wajib untuk mengaktifkan fungsionalitas Modal) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Logika Pemesanan Kopi -->
+    <script>
+        function proses() {
+            // Ambil elemen input
+            const inputNama = document.getElementById("nama").value;
+            const selectKopi = document.getElementById("pilihan");
+            const inputJumlah = parseInt(document.getElementById("jumlah").value);
+
+            // Validasi nama dan kopi terpilih
+            if (!inputNama.trim()) {
+                return;
+            }
+            if (selectKopi.selectedIndex === 0 || selectKopi.value === "") {
+                return;
+            }
+
+            // Ambil nama kopi dan harga dari opsi yang dipilih
+            const selectedOption = selectKopi.options[selectKopi.selectedIndex];
+            const namaKopi = selectedOption.value;
+            const hargaSatuan = parseInt(selectedOption.getAttribute("data-harga"));
+            
+            // Hitung total harga
+            const totalHarga = hargaSatuan * inputJumlah;
+
+            // Buat ID Transaksi acak yang profesional
+            const randomId = "KPK-" + Math.floor(100000 + Math.random() * 900000);
+
+            // Dapatkan waktu saat ini
+            const sekarang = new Date();
+            const formatWaktu = sekarang.toLocaleDateString("id-ID") + " " + sekarang.toLocaleTimeString("id-ID", { hour: '2-digit', minute: '2-digit' }) + " WIB";
+
+            // Pasang data ke dalam Modal Nota/Invoice
+            document.getElementById("invoiceId").innerText = randomId;
+            document.getElementById("receiptNama").innerText = inputNama;
+            document.getElementById("receiptWaktu").innerText = formatWaktu;
+            document.getElementById("receiptKopi").innerText = namaKopi;
+            document.getElementById("receiptDetailHarga").innerText = "Rp " + hargaSatuan.toLocaleString("id-ID") + " x " + inputJumlah + " Gelas";
+            document.getElementById("receiptTotal").innerText = "Rp " + totalHarga.toLocaleString("id-ID");
+
+            // Tampilkan Modal secara terprogram (Alternatif aman bebas dari alert standar browser)
+            const myModal = new bootstrap.Modal(document.getElementById('invoiceModal'));
+            myModal.show();
+
+            // Reset formulir pesanan agar siap digunakan kembali
+            document.getElementById("formKopi").reset();
+        }
+    </script>
+</body>
+</html>

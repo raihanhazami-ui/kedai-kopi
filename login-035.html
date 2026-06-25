@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Admin - Kedai Kopi Kami</title>
+    
+    <!-- Bootstrap 5 CSS via CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome untuk Ikon Menarik -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts (Playfair Display & Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght=0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-coffee-dark: #2c1a11;
+            --color-coffee-medium: #6f4e37;
+            --color-coffee-light: #f5ebe0;
+            --color-coffee-accent: #d4a373;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Poppins', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: #faf7f2;
+            color: #4a4a4a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: var(--color-coffee-dark);
+        }
+        .navbar-brand {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .nav-link {
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: var(--color-coffee-accent) !important;
+        }
+
+        /* Login Container & Card Styling */
+        .login-wrapper {
+            background: linear-gradient(rgba(44, 26, 17, 0.8), rgba(44, 26, 17, 0.85)), 
+                        url('watermarked_img_2923761011819721869.png') no-repeat center center/cover;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .login-card {
+            background-color: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            max-width: 450px;
+            width: 100%;
+            padding: 40px 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .text-accent {
+            color: var(--color-coffee-dark);
+            font-family: var(--font-serif);
+            font-weight: 700;
+        }
+
+        /* Form Customizations */
+        .form-label {
+            font-weight: 500;
+            color: var(--color-coffee-dark);
+            margin-bottom: 8px;
+        }
+
+        .input-group-text {
+            background-color: var(--color-coffee-light);
+            border: 1.5px solid #e0dcd5;
+            border-right: none;
+            color: var(--color-coffee-medium);
+            border-radius: 10px 0 0 10px;
+        }
+
+        .form-control {
+            border: 1.5px solid #e0dcd5;
+            border-radius: 10px;
+            padding: 12px 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--color-coffee-accent);
+            box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.25);
+        }
+
+        .input-group .form-control {
+            border-radius: 0 10px 10px 0;
+        }
+
+        /* Button Styling */
+        .btn-coffee {
+            background-color: var(--color-coffee-medium);
+            color: white;
+            border-radius: 10px;
+            font-weight: 600;
+            padding: 14px;
+            transition: background-color 0.3s ease;
+            border: none;
+        }
+
+        .btn-coffee:hover {
+            background-color: var(--color-coffee-dark);
+            color: white;
+        }
+
+        /* Password Toggle */
+        .password-toggle {
+            cursor: pointer;
+            border-left: none;
+            border-radius: 0 10px 10px 0;
+            background-color: white;
+            border: 1.5px solid #e0dcd5;
+            border-left: none;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigasi Utama -->
+    <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand text-white" href="index-035.html">
+                <i class="fa-solid fa-mug-hot me-2"></i>Kedai Kopi Kami
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link text-white-50" href="index-035.html">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link text-white-50" href="profile-035.html">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link text-white-50" href="transaksi-035.html">Transaksi</a></li>
+                    <li class="nav-item"><a class="nav-link active text-white" href="login-035.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Konten Utama Halaman Login -->
+    <main class="login-wrapper">
+        <div class="login-card">
+            <div class="text-center mb-4">
+                <div class="d-inline-flex p-3 rounded-circle mb-3" style="background-color: var(--color-coffee-light);">
+                    <i class="fa-solid fa-user-shield fs-2 text-accent"></i>
+                </div>
+                <h3 class="fw-bold text-accent">Login Admin</h3>
+                <p class="text-muted small">Masukkan kredensial Anda untuk masuk ke sistem admin</p>
+            </div>
+
+            <!-- Kontainer Notifikasi Kustom (Ganti Alert Standard) -->
+            <div id="feedbackMessage" class="alert d-none" role="alert"></div>
+
+            <form id="loginForm" onsubmit="event.preventDefault(); return validasiLogin();">
+                <!-- Username Input -->
+                <div class="mb-3">
+                    <label for="user" class="form-label">Username</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                        <input type="text" id="user" class="form-control" placeholder="Masukkan username..." required autocomplete="username">
+                    </div>
+                </div>
+
+                <!-- Password Input (Baru Ditambahkan agar Sesuai Standar Autentikasi) -->
+                <div class="mb-4">
+                    <label for="password" class="form-label">Password</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                        <input type="password" id="password" class="form-control" placeholder="Masukkan password..." required style="border-right: none;" autocomplete="current-password">
+                        <span class="input-group-text password-toggle" onclick="togglePassword()"><i class="fa-solid fa-eye" id="passwordIcon"></i></span>
+                    </div>
+                </div>
+
+                <!-- Tombol Login -->
+                <button type="submit" class="btn btn-coffee w-100 py-3 shadow-sm">
+                    <i class="fa-solid fa-right-to-bracket me-2"></i>Masuk Sekarang
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer Konsisten -->
+    <footer class="py-4 text-center mt-auto" style="background-color: var(--color-coffee-dark); color: rgba(255,255,255,0.6);">
+        <div class="container">
+            <p class="mb-0 small">&copy; 2026 Kedai Kopi Kami. All rights reserved. Created with Bootstrap 5.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Logika Interaktif Login -->
+    <script>
+        // Fungsi menyembunyikan/menampilkan password
+        function togglePassword() {
+            const passwordField = document.getElementById("password");
+            const passwordIcon = document.getElementById("passwordIcon");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                passwordIcon.classList.remove("fa-eye");
+                passwordIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordField.type = "password";
+                passwordIcon.classList.remove("fa-eye-slash");
+                passwordIcon.classList.add("fa-eye");
+            }
+        }
+
+        // Fungsi Validasi Proses Login
+        function validasiLogin() {
+            const inputUser = document.getElementById("user").value;
+            const inputPass = document.getElementById("password").value;
+            const feedback = document.getElementById("feedbackMessage");
+
+            // Contoh Kredensial Valid Sederhana
+            const validUser = "admin";
+            const validPass = "admin123";
+
+            feedback.classList.remove("d-none", "alert-success", "alert-danger");
+
+            if (inputUser.trim() === validUser && inputPass === validPass) {
+                // Tampilkan pesan sukses dalam UI
+                feedback.classList.add("alert-success");
+                feedback.innerHTML = '<i class="fa-solid fa-circle-check me-2"></i>Login Berhasil! Mengalihkan halaman...';
+                
+                // Reset form setelah sukses
+                document.getElementById("loginForm").reset();
+
+                // Mengalihkan secara simulasi setelah beberapa saat
+                setTimeout(() => {
+                    window.location.href = "index-035.html";
+                }, 1500);
+            } else {
+                // Tampilkan pesan gagal dalam UI
+                feedback.classList.add("alert-danger");
+                feedback.innerHTML = '<i class="fa-solid fa-circle-exclamation me-2"></i>Kombinasi Username atau Password salah!';
+            }
+            return false;
+        }
+    </script>
+</body>
+</html>
